@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: tpclean
-Version: 0.3
+Version: 0.5
 Summary: Custom library of functions for Data Science workflow automation
 Home-page: https://github.com/Pietrassyk/tpclean
 Author: Tino Pietrassyk
@@ -9,8 +9,12 @@ License: UNKNOWN
 Description: # tpclean
         home of the tpclean library
         
-        # Note for myself
-        to upload new version use:
+        ### Notes for myself
+        #to build new package
+        python3 setup.py sdist bdist_wheel
+        
+        #to upload new version use:
+        
         python -m twine upload dist/*
         tpclean folder
         
