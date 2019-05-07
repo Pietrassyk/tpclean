@@ -1,5 +1,6 @@
 README.md
 setup.py
+secondlevel_pkg/__init__.py
 tpclean.egg-info/PKG-INFO
 tpclean.egg-info/SOURCES.txt
 tpclean.egg-info/dependency_links.txt
