@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: tpclean
+Version: 0.1
+Summary: Custom library of functions for Data Science workflow automation
+Home-page: https://github.com/Pietrassyk/tpclean
+Author: Tino Pietrassyk
+Author-email: pietrassyk@gmail.com
+License: UNKNOWN
+Description: # tpclean
+        home of the tpclean library
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
