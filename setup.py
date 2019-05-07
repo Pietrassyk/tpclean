@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
 setuptools.setup(
      name='tpclean',  
      version='0.1',
-     scripts=['tpclean'] ,
+     scripts=['tpclean.py'] ,
      author="Tino Pietrassyk",
      author_email="pietrassyk@gmail.com",
      description="Custom library of functions for Data Science workflow automation",
