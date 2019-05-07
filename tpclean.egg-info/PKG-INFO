@@ -9,6 +9,11 @@ License: UNKNOWN
 Description: # tpclean
         home of the tpclean library
         
+        # Note for myself
+        to upload new version use:
+        python -m twine upload dist/*
+        tpclean folder
+        
 Platform: UNKNOWN
 Classifier: Programming Language :: Python :: 3
 Classifier: License :: OSI Approved :: MIT License
