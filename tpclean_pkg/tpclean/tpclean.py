@@ -6,10 +6,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-def test(a,b):
-    """Just testing the import"""
-    print(a+b)
-    return a+b
 
 # Plotting
 
@@ -35,8 +31,13 @@ def log_transform(df,col_list):
     return df
 
 def dummy_transformation(df,col_kwargs,one_hot = True):
-    """run one-hot transformation on target columns. Columns must be passed as a list of dicts
-    providing the followong parameters: name(str), bins(list), labels(list), abr(str) , """
+    """Run one_hot transformation on target column(s). Columns must be passed as a list of dicts
+    providing the following parameters: name(str), bins(list), labels(list), abr(str).
+    one_hot: if False columns are just binned not transformed into columns representing each bin as a 1 or 0
+
+     Example for col_kwargs:
+     col_dict=[{"name":"col1","bins":[0,1,2,3,99],"labels":[0,1,2,"3+"],"abr":"c_"}]
+     """
     df=df.copy()
     for col in col_kwargs:
         df[col["name"]]=pd.cut(df[col["name"]],bins=col["bins"],labels=col["labels"])

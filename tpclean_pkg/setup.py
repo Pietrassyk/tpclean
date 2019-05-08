@@ -3,7 +3,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 setuptools.setup(
      name='tpclean',  
-     version='0.3',
+     version='0.5',
      author="Tino Pietrassyk",
      author_email="pietrassyk@gmail.com",
      description="Custom library of functions for Data Science workflow automation",
