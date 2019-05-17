@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-
+from ast import literal_eval
 
 # Plotting
 
@@ -147,4 +147,62 @@ def dummy_transformation(df, col_kwargs, one_hot=True):
             dummy = pd.get_dummies(data=df[col["name"]], prefix=col["abr"], drop_first=True)
             df = pd.concat([df, dummy], axis=1)
             df = df.drop(col["name"], axis=1)
+    return df
+
+
+# Json Cleaning
+
+def convert_stringed_dict(string):
+    """Helperfunction Takes in a string that contains a dictionary or List and tries to convert it using literal_eval"""
+    try:
+        string = literal_eval(string)
+    except ValueError:
+        pass #print(f"An Error Accured with {type(string)}")
+    return string
+
+def columns_from_list(df, series):
+    """Takes in a Series which contains lists of the same structure and returns a Dataframe
+    With a column for everey List Entry"""
+    name = series.name
+    df1 = series.apply(lambda x: pd.Series(x))
+    df1 = df1.rename(columns=lambda x: name +"_"+ str(x + 1))
+    df = df.drop(name,axis=1)
+    df = pd.concat([df,df1],axis=1)
+    return df
+
+
+def columns_from_dict(df, dict_col):
+    """Takes in a Pandas Series that contains only dictionaries with the same keys.
+    Will Create New Columns with the dictionaries keys"""
+    df = df.copy()
+
+    # find the first index that has keys
+    index = 0
+    for i in range(len(dict_col)):
+        if isinstance(dict_col[i], dict):
+            index = i
+            break
+    try:
+        dict_col[index].keys()
+    except:
+        return df
+
+    # create columns from key values and store the data in it
+    for key in dict_col[index].keys():
+        df[dict_col.name + "_" + key] = dict_col.apply(lambda x: x[key] if isinstance(x, dict) else x)
+    return df.drop(dict_col.name, axis=1)
+
+def unnest_df_list(df, columns):
+    """Takes in a list of columns containing stringed Lists and convert them into one column for item in the List"""
+    df = df.copy()
+    for col in columns:
+        df = columns_from_list(df,df[col].apply(lambda x: convert_stringed_dict(x)))
+    return df
+
+#TODO Combine the two unnest function into one
+def unnest_df_dict(df, columns):
+    """Takes in a list of columns containing stringed dicts an convert them into one column for ech key in dicts"""
+    df = df.copy()
+    for col in columns:
+        df = columns_from_dict(df,df[col].apply(lambda x: convert_stringed_dict(x)))
     return df
