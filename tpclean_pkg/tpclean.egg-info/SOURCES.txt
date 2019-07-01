@@ -1,5 +1,6 @@
 README.md
 setup.py
+tpclean/Wrappers.py
 tpclean/__init__.py
 tpclean/tpclean.py
 tpclean.egg-info/PKG-INFO

@@ -28,6 +28,20 @@ def plot_hists(df, nrows=1, ncols=1, figsize=(4, 4), columns=None):
             break
         sns.distplot(df[c], ax=ax).set(title=c);
 
+def heatmap_corr(dataframe):
+    """ Plots a heatmap of correlation between features with masking.
+    ------------
+    Inputs
+    dataframe: Pandas DataFrame Object
+    ------------
+    Outputs:
+    None"""
+    #Thanks to Jon Keller for contributing
+    fig, ax = plt.subplots(figsize=(20,20))
+    mask=np.zeros_like(dataframe.corr(), dtype=np.bool)
+    mask[np.triu_indices_from(mask)] = True
+    color_map = sns.color_palette("hot_r")
+    ax = sns.heatmap(dataframe.corr(), cmap = color_map, mask=mask, square=True, annot=True)
 
 # SQL Connectivity
 
