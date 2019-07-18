@@ -46,12 +46,30 @@ def heatmap_corr(dataframe, show_numbers = True):
 
 # SQL Connectivity
 
-def sql_connect(database):
+def sql_connect(database, db_type = "sqlite" , **kwargs):
     global c
-    import sqlite3
-    conn = sqlite3.connect(database)
+
+    print(f"Connecting to {db_type}")
+
+    #sqlite connection
+    if db_type == "sqlite":
+        import sqlite3
+        conn = sqlite3.connect(database, **kwargs)
+
+    #mysql connection
+    if db_type == "mysql":
+        try:
+            import mysql.connector
+            print("successfully imported module")
+        except:
+            print(f"Error - Please install {db_type}")
+            return
+        conn = mysql.connector.Connect(database = database,**kwargs)
+
     c = conn.cursor()
-    print(f"Connection to {database} successfull. with curser {c}")
+    print(f"Connection to {db_type} successfull. with curser {c}")
+
+    return conn
 
 
 def sql(querry, cursor=None , df_return = True, verbose = False):
