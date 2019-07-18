@@ -28,11 +28,12 @@ def plot_hists(df, nrows=1, ncols=1, figsize=(4, 4), columns=None):
             break
         sns.distplot(df[c], ax=ax).set(title=c);
 
-def heatmap_corr(dataframe):
+def heatmap_corr(dataframe, show_numbers = True):
     """ Plots a heatmap of correlation between features with masking.
     ------------
     Inputs
     dataframe: Pandas DataFrame Object
+    show_numbers: [Bool] whether to show correlation labels or not
     ------------
     Outputs:
     None"""
@@ -41,16 +42,34 @@ def heatmap_corr(dataframe):
     mask=np.zeros_like(dataframe.corr(), dtype=np.bool)
     mask[np.triu_indices_from(mask)] = True
     color_map = sns.color_palette("hot_r")
-    ax = sns.heatmap(dataframe.corr(), cmap = color_map, mask=mask, square=True, annot=True)
+    ax = sns.heatmap(dataframe.corr(), cmap = color_map, mask=mask, square=True, annot=show_numbers)
 
 # SQL Connectivity
 
-def sql_connect(database):
+def sql_connect(database, db_type = "sqlite" , **kwargs):
     global c
-    import sqlite3
-    conn = sqlite3.connect(database)
+
+    print(f"Connecting to {db_type}")
+
+    #sqlite connection
+    if db_type == "sqlite":
+        import sqlite3
+        conn = sqlite3.connect(database, **kwargs)
+
+    #mysql connection
+    if db_type == "mysql":
+        try:
+            import mysql.connector
+            print("successfully imported module")
+        except:
+            print(f"Error - Please install {db_type}")
+            return
+        conn = mysql.connector.Connect(database = database,**kwargs)
+
     c = conn.cursor()
-    print(f"Connection to {database} successfull. with curser {c}")
+    print(f"Connection to {db_type} successfull. with curser {c}")
+
+    return conn
 
 
 def sql(querry, cursor=None , df_return = True, verbose = False):
