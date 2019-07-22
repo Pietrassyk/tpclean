@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from ast import literal_eval
 
+
 # Plotting
 
 def plot_hists(df, nrows=1, ncols=1, figsize=(4, 4), columns=None):
@@ -28,7 +29,8 @@ def plot_hists(df, nrows=1, ncols=1, figsize=(4, 4), columns=None):
             break
         sns.distplot(df[c], ax=ax).set(title=c);
 
-def heatmap_corr(dataframe, show_numbers = True):
+
+def heatmap_corr(dataframe, show_numbers=True):
     """ Plots a heatmap of correlation between features with masking.
     ------------
     Inputs
@@ -37,26 +39,27 @@ def heatmap_corr(dataframe, show_numbers = True):
     ------------
     Outputs:
     None"""
-    #Thanks to Jon Keller for contributing
-    fig, ax = plt.subplots(figsize=(20,20))
-    mask=np.zeros_like(dataframe.corr(), dtype=np.bool)
+    # Thanks to Jon Keller for contributing
+    fig, ax = plt.subplots(figsize=(20, 20))
+    mask = np.zeros_like(dataframe.corr(), dtype=np.bool)
     mask[np.triu_indices_from(mask)] = True
     color_map = sns.color_palette("hot_r")
-    ax = sns.heatmap(dataframe.corr(), cmap = color_map, mask=mask, square=True, annot=show_numbers)
+    ax = sns.heatmap(dataframe.corr(), cmap=color_map, mask=mask, square=True, annot=show_numbers)
+
 
 # SQL Connectivity
 
-def sql_connect(database, db_type = "sqlite" , **kwargs):
+def sql_connect(database, db_type="sqlite", **kwargs):
     global c
 
     print(f"Connecting to {db_type}")
 
-    #sqlite connection
+    # sqlite connection
     if db_type == "sqlite":
         import sqlite3
         conn = sqlite3.connect(database, **kwargs)
 
-    #mysql connection
+    # mysql connection
     if db_type == "mysql":
         try:
             import mysql.connector
@@ -64,7 +67,7 @@ def sql_connect(database, db_type = "sqlite" , **kwargs):
         except:
             print(f"Error - Please install {db_type}")
             return
-        conn = mysql.connector.Connect(database = database,**kwargs)
+        conn = mysql.connector.Connect(database=database, **kwargs)
 
     c = conn.cursor()
     print(f"Connection to {db_type} successfull. with curser {c}")
@@ -72,7 +75,7 @@ def sql_connect(database, db_type = "sqlite" , **kwargs):
     return conn
 
 
-def sql(querry, cursor=None , df_return = True, verbose = False):
+def sql(querry, cursor=None, df_return=True, verbose=False):
     """Runs a SQL querry and returns results as a Dataframe. cursor Variable is set to 'c' by default. Make sure your run sql_connect before using or set cursor manually
         df_return: (Bool) returns Pandas Dataframe of the Querry. If false just execute Querry
         verbose : (Bool) Prints Querry Statement"""
@@ -85,15 +88,26 @@ def sql(querry, cursor=None , df_return = True, verbose = False):
         print(
             "Provide cursor variable or Run tp.sql_conncet('database') to define cursor and make sure you dont have a Variable called <c>")
         return
+
     d.execute(querry)
-    df = pd.DataFrame(d.fetchall())
+
+    try:
+        df = pd.DataFrame(d.fetchall())
+    except:
+        print("No DataFrame to return")
+        return None
+
     if df_return and len(df):
         df.columns = [x[0] for x in d.description]
         return df
     if verbose:
         print(querry)
     print("Executed Querry")
-    return d.fetchall()
+    try:
+        return c.fetchall()
+    except:
+        return None
+
 
 def sql_make_table(tablename, columns=[], datatypes=[], primary_key=None):
     """Runs Querry for Creating a new table:
@@ -126,13 +140,23 @@ def sql_make_table(tablename, columns=[], datatypes=[], primary_key=None):
     querry = "CREATE TABLE " + tablename + "( " + ", ".join(cols_with_dtypes) + " )"
     sql(querry)
 
-def table_from_df(df, tablename, primary_key=None):
+
+def sql_table_from_df(df, tablename, primary_key=None):
     """Takes a Dataframe and writes it as a table into a SQL Database"""
     global c
-    # get existing tablenames from database
-    db_tablenames = list(sql("""select * from sqlite_master""").tbl_name.values)
-    # define
 
+    # get existing tablenames from database
+    ## mysql
+    if "mysql" in str(type(c)):
+        db_tablenames = list(sql("""show tables""").iloc[:, 0])
+    ## sqlite
+    elif "sqlite" in str(type(c)):
+        try:
+            db_tablenames = list(sql("""select * from sqlite_master""").tbl_name.values)
+        except:
+            db_tablenames = []
+
+    # define
     table_columns = "(" + (", ".join(df.columns)) + " )"
 
     # check whether table already exists
@@ -147,6 +171,7 @@ def table_from_df(df, tablename, primary_key=None):
         c.execute(insert)
     c.fetchall()
     return sql(f"select * from {tablename}")
+
 
 # Transformations
 
@@ -190,17 +215,18 @@ def convert_stringed_dict(string):
     try:
         string = literal_eval(string)
     except ValueError:
-        pass #print(f"An Error Accured with {type(string)}")
+        pass  # print(f"An Error Accured with {type(string)}")
     return string
+
 
 def columns_from_list(df, series):
     """Takes in a Series which contains lists of the same structure and returns a Dataframe
     With a column for everey List Entry"""
     name = series.name
     df1 = series.apply(lambda x: pd.Series(x))
-    df1 = df1.rename(columns=lambda x: name +"_"+ str(x + 1))
-    df = df.drop(name,axis=1)
-    df = pd.concat([df,df1],axis=1)
+    df1 = df1.rename(columns=lambda x: name + "_" + str(x + 1))
+    df = df.drop(name, axis=1)
+    df = pd.concat([df, df1], axis=1)
     return df
 
 
@@ -225,17 +251,19 @@ def columns_from_dict(df, dict_col):
         df[dict_col.name + "_" + key] = dict_col.apply(lambda x: x[key] if isinstance(x, dict) else x)
     return df.drop(dict_col.name, axis=1)
 
+
 def unnest_df_list(df, columns):
     """Takes in a list of columns containing stringed Lists and convert them into one column for item in the List"""
     df = df.copy()
     for col in columns:
-        df = columns_from_list(df,df[col].apply(lambda x: convert_stringed_dict(x)))
+        df = columns_from_list(df, df[col].apply(lambda x: convert_stringed_dict(x)))
     return df
 
-#TODO Combine the two unnest function into one
+
+# TODO Combine the two unnest function into one
 def unnest_df_dict(df, columns):
     """Takes in a list of columns containing stringed dicts an convert them into one column for ech key in dicts"""
     df = df.copy()
     for col in columns:
-        df = columns_from_dict(df,df[col].apply(lambda x: convert_stringed_dict(x)))
+        df = columns_from_dict(df, df[col].apply(lambda x: convert_stringed_dict(x)))
     return df

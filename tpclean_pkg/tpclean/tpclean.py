@@ -104,7 +104,7 @@ def sql(querry, cursor=None, df_return=True, verbose=False):
         print(querry)
     print("Executed Querry")
     try:
-        return c.fetchall()
+        return d.fetchall()
     except:
         return None
 

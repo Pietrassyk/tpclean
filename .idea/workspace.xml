@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dbbc9504-82bf-412e-b61c-dbe03e25a4c3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpclean_pkg/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/tpclean_pkg/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpclean_pkg/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/tpclean_pkg/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tpclean_pkg/build/lib/tpclean/tpclean.py" beforeDir="false" afterPath="$PROJECT_DIR$/tpclean_pkg/build/lib/tpclean/tpclean.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tpclean_pkg/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/tpclean_pkg/setup.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tpclean_pkg/tpclean.egg-info/PKG-INFO" beforeDir="false" afterPath="$PROJECT_DIR$/tpclean_pkg/tpclean.egg-info/PKG-INFO" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tpclean_pkg/tpclean/tpclean.py" beforeDir="false" afterPath="$PROJECT_DIR$/tpclean_pkg/tpclean/tpclean.py" afterDir="false" />
     </list>
@@ -15,7 +17,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tpclean_pkg/setup.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
@@ -27,8 +29,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tpclean_pkg/tpclean/tpclean.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="354">
-              <caret line="268" column="13" selection-start-line="268" selection-start-column="13" selection-end-line="268" selection-end-column="13" />
+            <state relative-caret-position="185">
+              <caret line="108" column="19" selection-start-line="108" selection-start-column="19" selection-end-line="108" selection-end-column="19" />
               <folding>
                 <element signature="e#64#82#0" expanded="true" />
               </folding>
@@ -39,18 +41,32 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tpclean_pkg/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+            <state relative-caret-position="60">
+              <caret line="4" selection-start-line="4" selection-end-line="4" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tpclean_pkg/private.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" column="29" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tpclean_pkg/LICENSE">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tpclean_pkg/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="135">
-                <caret line="9" selection-start-line="9" selection-end-line="9" selection-end-column="29" />
+              <first_editor relative-caret-position="150">
+                <caret line="10" column="63" selection-start-line="10" selection-start-column="63" selection-end-line="10" selection-end-column="63" />
               </first_editor>
               <second_editor />
             </state>
@@ -110,14 +126,15 @@
         <option value="$PROJECT_DIR$/tpclean_pkg/tpclean/Wrappers.py" />
         <option value="$PROJECT_DIR$/tpclean_pkg/Ideas non implemented.py" />
         <option value="$PROJECT_DIR$/tpclean_pkg/gitignore" />
-        <option value="$PROJECT_DIR$/tpclean_pkg/.gitignore" />
-        <option value="$PROJECT_DIR$/tpclean_pkg/README.md" />
-        <option value="$PROJECT_DIR$/tpclean_pkg/tpclean/tpclean.py" />
         <option value="$PROJECT_DIR$/tpclean_pkg/setup.py" />
+        <option value="$PROJECT_DIR$/tpclean_pkg/tpclean/tpclean.py" />
+        <option value="$PROJECT_DIR$/tpclean_pkg/.gitignore" />
+        <option value="$PROJECT_DIR$/tpclean_pkg/private.py" />
+        <option value="$PROJECT_DIR$/tpclean_pkg/README.md" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="23" />
     <option name="width" value="1399" />
     <option name="height" value="877" />
@@ -303,10 +320,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1399" height="877" extended-state="0" />
+    <frame x="0" y="23" width="1397" height="877" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26923078" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26889536" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -317,8 +334,8 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.4982382" weight="0.3120482" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3312102" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49056605" visible="true" weight="0.3566879" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.509434" side_tool="true" visible="true" weight="0.3566879" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.48909885" visible="true" weight="0.3566879" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.51090115" side_tool="true" visible="true" weight="0.3566879" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.3299363" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -380,9 +397,6 @@
     <entry file="file://$PROJECT_DIR$/test.ipynb" />
     <entry file="file://$PROJECT_DIR$/test.py" />
     <entry file="file://$PROJECT_DIR$/README.md" />
-    <entry file="file://$PROJECT_DIR$/tpclean_pkg/LICENSE">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/tpclean_pkg/tpclean/Wrappers.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -399,10 +413,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tpclean_pkg/gitignore" />
     <entry file="file://$PROJECT_DIR$/tpclean_pkg/Untitled.ipynb" />
-    <entry file="file://$PROJECT_DIR$/tpclean_pkg/.gitignore">
+    <entry file="file://$PROJECT_DIR$/tpclean_pkg/setup.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+        <state relative-caret-position="75">
+          <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -413,30 +427,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tpclean_pkg/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="135">
-            <caret line="9" selection-start-line="9" selection-end-line="9" selection-end-column="29" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tpclean_pkg/tpclean/tpclean.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="268" column="13" selection-start-line="268" selection-start-column="13" selection-end-line="268" selection-end-column="13" />
+        <state relative-caret-position="185">
+          <caret line="108" column="19" selection-start-line="108" selection-start-column="19" selection-end-line="108" selection-end-column="19" />
           <folding>
             <element signature="e#64#82#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tpclean_pkg/setup.py">
+    <entry file="file://$PROJECT_DIR$/tpclean_pkg/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
+        <state relative-caret-position="60">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tpclean_pkg/LICENSE">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tpclean_pkg/private.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="29" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tpclean_pkg/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="150">
+            <caret line="10" column="63" selection-start-line="10" selection-start-column="63" selection-end-line="10" selection-end-column="63" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
